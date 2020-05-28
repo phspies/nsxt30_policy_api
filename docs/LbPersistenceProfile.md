@@ -1,0 +1,13 @@
+# LbPersistenceProfile
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Children** | [**[]ChildPolicyConfigResource**](ChildPolicyConfigResource.md) | subtree for this type within policy tree containing nested elements.  | [optional] [default to null]
+**Overridden** | **bool** | Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.  | [optional] [default to false]
+**MarkedForDelete** | **bool** | Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.  | [optional] [default to false]
+**PersistenceShared** | **bool** | Persistence shared setting indicates that all LBVirtualServers that consume this LBPersistenceProfile should share the same persistence mechanism when enabled.  Meaning, persistence entries of a client accessing one virtual server will also affect the same client&#x27;s connections to a different virtual server. For example, say there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to the same Group g1 consisting of two servers (s11:80 and s12:80). By default, each virtual server will have its own persistence table or cookie. So, in the earlier example, there will be two tables (vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client connects to vip1:80 and later connects to vip1:8080, the second connection may be sent to a different server than the first.  When persistence_shared is enabled, then the second connection will always connect to the same server as the original connection. For COOKIE persistence type, the same cookie will be shared by multiple virtual servers. For SOURCE_IP persistence type, the persistence table will be shared across virtual servers. For GENERIC persistence type, the persistence table will be shared across virtual servers which consume the same persistence profile in LBRule actions.  | [optional] [default to false]
+**ResourceType** | **string** | The resource_type property identifies persistence profile type.  | [default to null]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
